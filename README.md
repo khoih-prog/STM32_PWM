@@ -13,7 +13,7 @@
 
 * [Why do we need this STM32_PWM library](#why-do-we-need-this-STM32_PWM-library)
   * [Features](#features)
-  * [Why using ISR-based PWM is better](#why-using-isr-based-pwm-is-better)
+  * [Why using hardware-based PWM is the best](#why-using-hardware-based-pwm-is-the-best)
   * [Currently supported Boards](#currently-supported-boards)
   * [Important Notes about ISR](#important-notes-about-isr)
 * [Prerequisites](#prerequisites)
@@ -108,7 +108,7 @@ Functions using normal software-based PWM, relying on loop() and calling millis(
 ## Prerequisites
 
  1. [`Arduino IDE 1.8.16+` for Arduino](https://www.arduino.cc/en/Main/Software)
- 2. [`Arduino Core for STM32 v2.0.0+`](https://github.com/stm32duino/Arduino_Core_STM32) for STM32F/L/H/G/WB/MP1 boards. [![GitHub release](https://img.shields.io/github/release/stm32duino/Arduino_Core_STM32.svg)](https://github.com/stm32duino/Arduino_Core_STM32/releases/latest)
+ 2. [`Arduino Core for STM32 v2.1.0+`](https://github.com/stm32duino/Arduino_Core_STM32) for STM32F/L/H/G/WB/MP1 boards. [![GitHub release](https://img.shields.io/github/release/stm32duino/Arduino_Core_STM32.svg)](https://github.com/stm32duino/Arduino_Core_STM32/releases/latest)
 
  3. To use with certain example
    - [`SimpleTimer library`](https://github.com/jfturcot/SimpleTimer) for [ISR_16_Timers_Array example](examples/ISR_16_Timers_Array).
@@ -334,7 +334,7 @@ void setup()
 ---
 ---
 
-### Example [PWM_Multi](examples/PWM_Multi)
+### Example [PWMs_Array_Complex](examples/PWMs_Array_Complex)
 
 ```
 #if !( defined(STM32F0) || defined(STM32F1) || defined(STM32F2) || defined(STM32F3)  ||defined(STM32F4) || defined(STM32F7) || \
