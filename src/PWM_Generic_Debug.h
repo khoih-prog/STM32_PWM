@@ -12,7 +12,7 @@
 
   Version Modified By   Date      Comments
   ------- -----------  ---------- -----------
-  1.0.0   K.Hoang      21/09/2021 Initial coding for STM32F/L/H/G/WB/MP1 boards
+  1.0.0   K.Hoang      30/09/2021 Initial coding for STM32F/L/H/G/WB/MP1 boards
  *****************************************************************************************************************************/
 
 #pragma once
