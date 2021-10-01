@@ -1,0 +1,66 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+HardwareTimer	KEYWORD1
+callback_function_t KEYWORD1
+
+timer_index_t KEYWORD1
+timerObj_t  KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+###################################
+# Class HardwareTimer
+###################################
+
+pause	KEYWORD2
+pauseChannel	KEYWORD2
+resume	KEYWORD2
+resumeChannel	KEYWORD2
+setPrescaleFactor	KEYWORD2
+getPrescaleFactor	KEYWORD2
+setOverflow	KEYWORD2
+getOverflow	KEYWORD2
+setPWM	KEYWORD2
+setCount	KEYWORD2
+getCount	KEYWORD2
+setMode	KEYWORD2
+getMode	KEYWORD2
+setPreloadEnable	KEYWORD2
+getCaptureCompare	KEYWORD2
+setCaptureCompare	KEYWORD2
+setInterruptPriority	KEYWORD2
+attachInterrupt	KEYWORD2
+detachInterrupt	KEYWORD2
+hasInterrupt	KEYWORD2
+timerHandleDeinit	KEYWORD2
+refresh	KEYWORD2
+getTimerClkFreq	KEYWORD2
+captureCompareCallback	KEYWORD2
+updateCallback	KEYWORD2
+getHandle	KEYWORD2
+getChannel	KEYWORD2
+getLLChannel	KEYWORD2
+getIT	KEYWORD2
+getAssociatedChannel	KEYWORD2
+isComplementaryChannel	KEYWORD2
+
+###################################
+# timer.h/c
+###################################
+
+get_timer_obj KEYWORD2
+enableTimerClock  KEYWORD2
+disableTimerClock KEYWORD2
+getTimerIrq KEYWORD2
+getTimerClkSrc  KEYWORD2
+getTimerUpIrq KEYWORD2
+getTimerCCIrq KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################

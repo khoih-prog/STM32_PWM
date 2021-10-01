@@ -1,0 +1,29 @@
+{
+  "name": "STM32_PWM",
+  "version": "1.0.0",
+  "keywords": "timing, device, control, timer, pwm, interrupt, isr, isr-based, hardware-timer, mission-critical, accuracy, non-blocking, stm32, stm32h7, stm32l5, stm32f1, stm32f4, stm32f7, stm32g4, precise, hardware",
+  "description": "This wrapper library enables you to use Hardware-based PWM on STM32F/L/H/G/WB/MP1 boards to create and output PWM to pins. The most important feature is they're purely hardware-based PWM channels. Therefore, their executions are very precise and not blocked by bad-behaving functions or tasks. This important feature is absolutely necessary for mission-critical tasks. These hardware PWM channels still work even if other functions are blocking. Moreover, they are much more precise (certainly depending on clock frequency accuracy) than other ISR-based or software-based PWM using millis() or micros(). That's necessary if you need to measure some data requiring very high frequency and much better accuracy. PWM feature can now be used.",
+  "authors":
+  {
+    "name":  "Khoi Hoang",
+    "url":   "https://github.com/khoih-prog",
+    "maintainer": true
+  },
+  "repository":
+  {
+    "type": "git",
+    "url": "//https://github.com/khoih-prog/STM32_PWM"
+  },
+  "homepage": "https://github.com/khoih-prog/STM32_PWM",
+  "export": {
+    "exclude": [
+      "linux",
+      "extras",
+      "tests"
+    ]
+  },
+  "frameworks": "*",
+  "platforms": "ststm32",
+  "examples": "examples/*/*/*.ino",
+  "license": "MIT"
+}
