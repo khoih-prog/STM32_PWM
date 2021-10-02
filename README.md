@@ -929,6 +929,7 @@ SimpleTimer (ms): 2000, us : 52974007, Dus : 10001000
 PWM Channel : 0, programmed Period (us): 50000, actual : 49999, programmed DutyCycle : 20, actual : 20.00
 PWM Channel : 1, programmed Period (us): 20000, actual : 20000, programmed DutyCycle : 30, actual : 30.00
 PWM Channel : 2, programmed Period (us): 2000, actual : 2000, programmed DutyCycle : 50, actual : 50.00
+```
 
 ---
 ---
