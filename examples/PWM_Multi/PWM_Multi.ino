@@ -18,7 +18,7 @@
 #if !( defined(STM32F0) || defined(STM32F1) || defined(STM32F2) || defined(STM32F3)  ||defined(STM32F4) || defined(STM32F7) || \
        defined(STM32L0) || defined(STM32L1) || defined(STM32L4) || defined(STM32H7)  ||defined(STM32G0) || defined(STM32G4) || \
        defined(STM32WB) || defined(STM32MP1) || defined(STM32L5))
-#error This code is designed to run on STM32F/L/H/G/WB/MP1 platform! Please check your Tools->Board setting.
+  #error This code is designed to run on STM32F/L/H/G/WB/MP1 platform! Please check your Tools->Board setting.
 #endif
 
 // These define's must be placed at the beginning before #include "ESP32_PWM.h"
@@ -95,6 +95,7 @@ uint32_t pins[]       = { pin0, pin4, pin10 };
 #warning Using NUCLEO_F767ZI pins
 
 // For F767ZI => pins[] = pin0, pin3, pin9/10 ============>> TimerIndex = 1, 0, 3
+// Pin PA0 (D32), D3 and D9
 uint32_t pins[]       = { pin0, pin3, pin9 };
 
 #elif ( defined(STM32L5) && defined(ARDUINO_NUCLEO_L552ZE_Q) )
@@ -126,7 +127,8 @@ uint32_t pins[]       = { pin0, pin3, pin9 };
 
 TIM_TypeDef *TimerInstance[] = { TIM1, TIM2, TIM3 };
 
-uint32_t freq[]       = { 1, 2, 5 };
+//uint32_t freq[]       = { 1, 2, 5 };
+uint32_t freq[]       = { 1000, 2000, 5000 };
 
 uint32_t dutyCycle[]  = { 10, 20, 30 };
 

@@ -95,6 +95,7 @@ volatile uint64_t startMicros = 0;
   #warning Using NUCLEO_F767ZI pins
   
   // For F767ZI => pins[] = pin0, pin3, pin9/10 ============>> TimerIndex = 1, 0, 3
+  // Pin PA0 (D32), D3 and D9
   uint32_t pins[]       = { pin0, pin3, pin9 };
 
 #elif ( defined(STM32L5) && defined(ARDUINO_NUCLEO_L552ZE_Q) )
