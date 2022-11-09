@@ -58,6 +58,22 @@
 
 This **wrapper library** enables you to use Hardware-based PWM on STM32F/L/H/G/WB/MP1 boards to create and output PWM to pins.
 
+This library is using the **same or similar functions** as other FastPWM libraries, as follows, to enable you to **port your PWM code easily between platforms**
+
+- [**RP2040_PWM**](https://github.com/khoih-prog/RP2040_PWM)
+- [**AVR_PWM**](https://github.com/khoih-prog/AVR_PWM)
+- [**megaAVR_PWM**](https://github.com/khoih-prog/megaAVR_PWM)
+- [**ESP32_FastPWM**](https://github.com/khoih-prog/ESP32_FastPWM)
+- [**SAMD_PWM**](https://github.com/khoih-prog/SAMD_PWM)
+- [**SAMDUE_PWM**](https://github.com/khoih-prog/SAMDUE_PWM)
+- [**nRF52_PWM**](https://github.com/khoih-prog/nRF52_PWM)
+- [**Teensy_PWM**](https://github.com/khoih-prog/Teensy_PWM)
+- [**ATtiny_PWM**](https://github.com/khoih-prog/ATtiny_PWM)
+- [**Portenta_H7_PWM**](https://github.com/khoih-prog/Portenta_H7_PWM)
+- [**MBED_RP2040_PWM**](https://github.com/khoih-prog/MBED_RP2040_PWM)
+- [**nRF52_MBED_PWM**](https://github.com/khoih-prog/nRF52_MBED_PWM)
+- [**STM32_PWM**](https://github.com/khoih-prog/STM32_PWM)
+
 ---
 
 The most important feature is they're purely hardware-based PWM channels. Therefore, their executions are **very precise and not blocked by bad-behaving functions or tasks**. This important feature is absolutely necessary for mission-critical tasks. 
@@ -111,7 +127,7 @@ Functions using normal software-based PWM, relying on loop() and calling millis(
 ## Prerequisites
 
  1. [`Arduino IDE 1.8.19+` for Arduino](https://github.com/arduino/Arduino). [![GitHub release](https://img.shields.io/github/release/arduino/Arduino.svg)](https://github.com/arduino/Arduino/releases/latest)
- 2. [`Arduino Core for STM32 v2.2.0+`](https://github.com/stm32duino/Arduino_Core_STM32) for STM32F/L/H/G/WB/MP1 boards. [![GitHub release](https://img.shields.io/github/release/stm32duino/Arduino_Core_STM32.svg)](https://github.com/stm32duino/Arduino_Core_STM32/releases/latest)
+ 2. [`Arduino Core for STM32 v2.3.0+`](https://github.com/stm32duino/Arduino_Core_STM32) for STM32F/L/H/G/WB/MP1 boards. [![GitHub release](https://img.shields.io/github/release/stm32duino/Arduino_Core_STM32.svg)](https://github.com/stm32duino/Arduino_Core_STM32/releases/latest)
 
  3. To use with certain example
    - [`SimpleTimer library`](https://github.com/jfturcot/SimpleTimer) for [ISR_16_Timers_Array example](examples/ISR_16_Timers_Array).
