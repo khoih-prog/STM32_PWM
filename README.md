@@ -24,6 +24,7 @@
   * [Why using hardware-based PWM is the best](#why-using-hardware-based-pwm-is-the-best)
   * [Currently supported Boards](#currently-supported-boards)
   * [Important Notes about ISR](#important-notes-about-isr)
+* [Changelog](changelog.md)
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
   * [Use Arduino Library Manager](#use-arduino-library-manager)
