@@ -5,7 +5,7 @@
 
   Built by Khoi Hoang https://github.com/khoih-prog/STM32_PWM
   Licensed under MIT license
-  
+
   Hardware-based multi-channel PWM wrapper library for STM32F/L/H/G/WB/MP1 boards
 
   Version: 1.0.0
@@ -18,7 +18,7 @@
 #if !( defined(STM32F0) || defined(STM32F1) || defined(STM32F2) || defined(STM32F3)  ||defined(STM32F4) || defined(STM32F7) || \
        defined(STM32L0) || defined(STM32L1) || defined(STM32L4) || defined(STM32H7)  ||defined(STM32G0) || defined(STM32G4) || \
        defined(STM32WB) || defined(STM32MP1) || defined(STM32L5))
-  #error This code is designed to run on STM32F/L/H/G/WB/MP1 platform! Please check your Tools->Board setting.
+#error This code is designed to run on STM32F/L/H/G/WB/MP1 platform! Please check your Tools->Board setting.
 #endif
 
 // These define's must be placed at the beginning before #include "ESP32_PWM.h"
@@ -34,15 +34,15 @@
 #define LED_OFF       HIGH
 
 #ifndef LED_BUILTIN
-#define LED_BUILTIN       13
+  #define LED_BUILTIN       13
 #endif
 
 #ifndef LED_BLUE
-#define LED_BLUE          2
+  #define LED_BLUE          2
 #endif
 
 #ifndef LED_RED
-#define LED_RED           3
+  #define LED_RED           3
 #endif
 
 #define boolean           bool
@@ -56,7 +56,7 @@ volatile uint64_t startMicros = 0;
 
 /////////////////////////////////////////////////
 
-// Change the pin according to your STM32 board. There is no single definition for all boards. 
+// Change the pin according to your STM32 board. There is no single definition for all boards.
 #define pin0    PA0
 #define pin1    D1
 #define pin2    D2
@@ -79,44 +79,44 @@ volatile uint64_t startMicros = 0;
 //////////////////////////////////////////////////////
 
 // For F103CB
-// 
+//
 
 // Change the pin according to your STM32 board. There is no single definition for all boards.
 
 #if ( defined(STM32F1) && ( defined(ARDUINO_BLUEPILL_F103CB) || defined(ARDUINO_BLUEPILL_F103C8) ) )
 
-  #warning Using BLUEPILL_F103CB / BLUEPILL_F103C8 pins
+#warning Using BLUEPILL_F103CB / BLUEPILL_F103C8 pins
 
-  // For F103CB => pins[] = pin0, pin4, pin10 ============>> TimerIndex = 1, 2, 0
-  uint32_t pins[]       = { pin0, pin4, pin10 };
+// For F103CB => pins[] = pin0, pin4, pin10 ============>> TimerIndex = 1, 2, 0
+uint32_t pins[]       = { pin0, pin4, pin10 };
 
 #elif ( defined(STM32F7) && defined(ARDUINO_NUCLEO_F767ZI) )
 
-  #warning Using NUCLEO_F767ZI pins
-  
-  // For F767ZI => pins[] = pin0, pin3, pin9/10 ============>> TimerIndex = 1, 0, 3
-  // Pin PA0 (D32), D3 and D9
-  uint32_t pins[]       = { pin0, pin3, pin9 };
+#warning Using NUCLEO_F767ZI pins
+
+// For F767ZI => pins[] = pin0, pin3, pin9/10 ============>> TimerIndex = 1, 0, 3
+// Pin PA0 (D32), D3 and D9
+uint32_t pins[]       = { pin0, pin3, pin9 };
 
 #elif ( defined(STM32L5) && defined(ARDUINO_NUCLEO_L552ZE_Q) )
 
-  #warning Using NUCLEO_L552ZE_Q pins
+#warning Using NUCLEO_L552ZE_Q pins
 
-  // For NUCLEO_L552ZE_Q => pins[] = pin0, pin3, pin9/10 ============>> TimerIndex = 1, 0, 3
-  uint32_t pins[]       = { pin0, pin3, pin9 };
+// For NUCLEO_L552ZE_Q => pins[] = pin0, pin3, pin9/10 ============>> TimerIndex = 1, 0, 3
+uint32_t pins[]       = { pin0, pin3, pin9 };
 
 #elif ( defined(STM32H7) && defined(ARDUINO_NUCLEO_H743ZI2) )
 
-  #warning Using NUCLEO_H743ZI2 pins
+#warning Using NUCLEO_H743ZI2 pins
 
-  // For NUCLEO_L552ZE_Q => pins[] = pin0, pin3, pin9/10 ============>> TimerIndex = 1, 0, 3
-  uint32_t pins[]       = { pin0, pin3, pin9 };  
+// For NUCLEO_L552ZE_Q => pins[] = pin0, pin3, pin9/10 ============>> TimerIndex = 1, 0, 3
+uint32_t pins[]       = { pin0, pin3, pin9 };
 
 #else
 
-  // For ??? => pins[] = pin0, pin3, pin9/10 ============>> TimerIndex = 1, 0, 3
-  uint32_t pins[]       = { pin0, pin3, pin9 };
-  
+// For ??? => pins[] = pin0, pin3, pin9/10 ============>> TimerIndex = 1, 0, 3
+uint32_t pins[]       = { pin0, pin3, pin9 };
+
 #endif
 
 //////////////////////////////////////////////////////
@@ -325,40 +325,50 @@ void simpleTimerDoingSomething2s()
 
   uint64_t currMicros = micros();
 
-  Serial.print(F("SimpleTimer (ms): ")); Serial.print(SIMPLE_TIMER_MS);
-  Serial.print(F(", us : ")); Serial.print(currMicros);
-  Serial.print(F(", Dus : ")); Serial.println(currMicros - previousMicrosStart);
+  Serial.print(F("SimpleTimer (ms): "));
+  Serial.print(SIMPLE_TIMER_MS);
+  Serial.print(F(", us : "));
+  Serial.print(currMicros);
+  Serial.print(F(", Dus : "));
+  Serial.println(currMicros - previousMicrosStart);
 
   for (uint16_t i = 0; i < NUMBER_ISR_PWMS; i++)
   {
 #if USE_COMPLEX_STRUCT
-    Serial.print(F("PWM Channel : ")); Serial.print(i);
+    Serial.print(F("PWM Channel : "));
+    Serial.print(i);
     Serial.print(F(", programmed Period (us): "));
 
     Serial.print(1000000 / curISR_PWM_Data[i].PWM_Freq);
 
-    Serial.print(F(", actual : ")); Serial.print(curISR_PWM_Data[i].deltaMicrosStart);
+    Serial.print(F(", actual : "));
+    Serial.print(curISR_PWM_Data[i].deltaMicrosStart);
 
     Serial.print(F(", programmed DutyCycle : "));
 
     Serial.print(curISR_PWM_Data[i].PWM_DutyCycle);
 
-    Serial.print(F(", actual : ")); Serial.println((float) curISR_PWM_Data[i].deltaMicrosStop * 100.0f / curISR_PWM_Data[i].deltaMicrosStart);
+    Serial.print(F(", actual : "));
+    Serial.println((float) curISR_PWM_Data[i].deltaMicrosStop * 100.0f / curISR_PWM_Data[i].deltaMicrosStart);
 
 #else
 
-    Serial.print(F("PWM Channel : ")); Serial.print(i);
+    Serial.print(F("PWM Channel : "));
+    Serial.print(i);
 
     Serial.print(1000000 / PWM_Freq[i]);
 
-    Serial.print(F(", programmed Period (us): ")); Serial.print(1000000 / PWM_Freq[i]);
-    Serial.print(F(", actual : ")); Serial.print(deltaMicrosStart[i]);
+    Serial.print(F(", programmed Period (us): "));
+    Serial.print(1000000 / PWM_Freq[i]);
+    Serial.print(F(", actual : "));
+    Serial.print(deltaMicrosStart[i]);
 
     Serial.print(F(", programmed DutyCycle : "));
 
     Serial.print(PWM_DutyCycle[i]);
 
-    Serial.print(F(", actual : ")); Serial.println( (float) deltaMicrosStop[i] * 100.0f / deltaMicrosStart[i]);
+    Serial.print(F(", actual : "));
+    Serial.println( (float) deltaMicrosStop[i] * 100.0f / deltaMicrosStart[i]);
 #endif
   }
 
@@ -384,11 +394,13 @@ void setup()
   }
 
   Serial.begin(115200);
+
   while (!Serial);
 
   delay(2000);
 
-  Serial.print(F("\nStarting PWMs_Array_Complex on ")); Serial.println(BOARD_NAME);
+  Serial.print(F("\nStarting PWMs_Array_Complex on "));
+  Serial.println(BOARD_NAME);
   Serial.println(STM32_PWM_VERSION);
   // Automatically retrieve TIM instance and channel associated to pin
   // This is used to be compatible with all STM32 series automatically.
@@ -414,47 +426,57 @@ void setup()
     if (Instance != nullptr)
     {
       uint8_t timerIndex = get_timer_index(Instance);
-      
+
       // pin => 0, 1, etc
       uint32_t channel = STM_PIN_CHANNEL(pinmap_function( pinNameToUse, PinMap_PWM));
-  
-      Serial.print("Index = "); Serial.print(index);
-      Serial.print(", Instance = 0x"); Serial.print( (uint32_t) Instance, HEX);
-      Serial.print(", channel = "); Serial.print(channel);
-      Serial.print(", TimerIndex = "); Serial.print(get_timer_index(Instance));
-      Serial.print(", PinName = "); Serial.println( pinNameToUse );
-  
+
+      Serial.print("Index = ");
+      Serial.print(index);
+      Serial.print(", Instance = 0x");
+      Serial.print( (uint32_t) Instance, HEX);
+      Serial.print(", channel = ");
+      Serial.print(channel);
+      Serial.print(", TimerIndex = ");
+      Serial.print(get_timer_index(Instance));
+      Serial.print(", PinName = ");
+      Serial.println( pinNameToUse );
+
       for ( uint8_t i = 0; i < index; i++)
       {
         if (timerIndex == Timer_Used[i])
         {
-          Serial.print("ERROR => Already used TimerIndex for index = "); Serial.println(index);
-          Serial.print(", TimerIndex  = "); Serial.println(timerIndex);
+          Serial.print("ERROR => Already used TimerIndex for index = ");
+          Serial.println(index);
+          Serial.print(", TimerIndex  = ");
+          Serial.println(timerIndex);
+
           //break;
           while (true)
             delay(100);
-        }    
+        }
       }
-  
+
       // Update Timer_Used with current timerIndex
       Timer_Used[index] = timerIndex;
-   
+
       HardwareTimer *MyTim = new HardwareTimer(Instance);
 
-  #if USE_COMPLEX_STRUCT
-  
+#if USE_COMPLEX_STRUCT
+
       MyTim->setPWM(channel, pins[index], curISR_PWM_Data[index].PWM_Freq, curISR_PWM_Data[index].PWM_DutyCycle,
-                    curISR_PWM_Data[index].irqCallbackStartFunc, curISR_PWM_Data[index].irqCallbackStopFunc);         
-  
-  #else
-  
-      MyTim->setPWM(channel, pins[index], PWM_Freq[index], PWM_DutyCycle[index], irqCallbackStartFunc[index], irqCallbackStopFunc[index]);
-  
-  #endif
+                    curISR_PWM_Data[index].irqCallbackStartFunc, curISR_PWM_Data[index].irqCallbackStopFunc);
+
+#else
+
+      MyTim->setPWM(channel, pins[index], PWM_Freq[index], PWM_DutyCycle[index], irqCallbackStartFunc[index],
+                    irqCallbackStopFunc[index]);
+
+#endif
     }
     else
     {
-      Serial.print("ERROR => Wrong pin, You have to select another one. Skip NULL Instance for index = "); Serial.println(index);
+      Serial.print("ERROR => Wrong pin, You have to select another one. Skip NULL Instance for index = ");
+      Serial.println(index);
     }
   }
 

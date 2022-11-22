@@ -18,7 +18,7 @@
 #if !( defined(STM32F0) || defined(STM32F1) || defined(STM32F2) || defined(STM32F3)  ||defined(STM32F4) || defined(STM32F7) || \
        defined(STM32L0) || defined(STM32L1) || defined(STM32L4) || defined(STM32H7)  ||defined(STM32G0) || defined(STM32G4) || \
        defined(STM32WB) || defined(STM32MP1) || defined(STM32L5))
-  #error This code is designed to run on STM32F/L/H/G/WB/MP1 platform! Please check your Tools->Board setting.
+#error This code is designed to run on STM32F/L/H/G/WB/MP1 platform! Please check your Tools->Board setting.
 #endif
 
 // These define's must be placed at the beginning before #include "ESP32_PWM.h"
@@ -172,7 +172,8 @@ timerPWMCallback PeriodCallback[] =
 
 void printLine()
 {
-  Serial.println(F("\n=========================================================================================================="));
+  Serial.println(
+    F("\n=========================================================================================================="));
 }
 
 void printCount()
@@ -185,7 +186,9 @@ void printCount()
 
     for (uint8_t index = 0; index < NUM_OF_PINS; index++)
     {
-      Serial.print(F("Count ")); Serial.print(index); Serial.print(F("\t\t"));
+      Serial.print(F("Count "));
+      Serial.print(index);
+      Serial.print(F("\t\t"));
     }
 
     printLine();
@@ -195,7 +198,8 @@ void printCount()
   {
     for (uint8_t index = 0; index < NUM_OF_PINS; index++)
     {
-      Serial.print(callbackTime[index]); Serial.print(F("\t\t"));
+      Serial.print(callbackTime[index]);
+      Serial.print(F("\t\t"));
     }
 
     Serial.println();
@@ -235,11 +239,13 @@ void setup()
   }
 
   Serial.begin(115200);
+
   while (!Serial);
 
   delay(100);
 
-  Serial.print(F("\nStarting PWM_Multi_Args on ")); Serial.println(BOARD_NAME);
+  Serial.print(F("\nStarting PWM_Multi_Args on "));
+  Serial.println(BOARD_NAME);
   Serial.println(STM32_PWM_VERSION);
 
   for (uint8_t index = 0; index < NUM_OF_PINS; index++)
@@ -265,18 +271,26 @@ void setup()
       // pin => 0, 1, etc
       uint32_t channel = STM_PIN_CHANNEL(pinmap_function( pinNameToUse, PinMap_PWM));
 
-      Serial.print("Index = "); Serial.print(index);
-      Serial.print(", Instance = 0x"); Serial.print( (uint32_t) Instance, HEX);
-      Serial.print(", channel = "); Serial.print(channel);
-      Serial.print(", TimerIndex = "); Serial.print(get_timer_index(Instance));
-      Serial.print(", PinName = "); Serial.println( pinNameToUse );
+      Serial.print("Index = ");
+      Serial.print(index);
+      Serial.print(", Instance = 0x");
+      Serial.print( (uint32_t) Instance, HEX);
+      Serial.print(", channel = ");
+      Serial.print(channel);
+      Serial.print(", TimerIndex = ");
+      Serial.print(get_timer_index(Instance));
+      Serial.print(", PinName = ");
+      Serial.println( pinNameToUse );
 
       for ( uint8_t i = 0; i < index; i++)
       {
         if (timerIndex == Timer_Used[i])
         {
-          Serial.print("ERROR => Already used TimerIndex for index = "); Serial.println(index);
-          Serial.print(", TimerIndex  = "); Serial.println(timerIndex);
+          Serial.print("ERROR => Already used TimerIndex for index = ");
+          Serial.println(index);
+          Serial.print(", TimerIndex  = ");
+          Serial.println(timerIndex);
+
           //break;
           while (true)
             delay(100);
@@ -301,12 +315,13 @@ void setup()
     }
     else
     {
-      Serial.print("ERROR => Wrong pin, You have to select another one. Skip NULL Instance for index = "); Serial.println(index);
+      Serial.print("ERROR => Wrong pin, You have to select another one. Skip NULL Instance for index = ");
+      Serial.println(index);
     }
   }
-}  
+}
 
-  void loop()
-  {
-    check_status();
-  }
+void loop()
+{
+  check_status();
+}

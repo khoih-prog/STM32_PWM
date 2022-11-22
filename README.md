@@ -2,11 +2,16 @@
 
 [![arduino-library-badge](https://www.ardu-badge.com/badge/STM32_PWM.svg?)](https://www.ardu-badge.com/STM32_PWM)
 [![GitHub release](https://img.shields.io/github/release/khoih-prog/STM32_PWM.svg)](https://github.com/khoih-prog/STM32_PWM/releases)
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/khoih-prog/STM32_PWM/blob/master/LICENSE)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/khoih-prog/STM32_PWM/blob/main/LICENSE)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](#Contributing)
 [![GitHub issues](https://img.shields.io/github/issues/khoih-prog/STM32_PWM.svg)](http://github.com/khoih-prog/STM32_PWM/issues)
 
-<a href="https://www.buymeacoffee.com/khoihprog6" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: 181px !important;" ></a>
+
+
+<a href="https://www.buymeacoffee.com/khoihprog6" title="Donate to my libraries using BuyMeACoffee"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Donate to my libraries using BuyMeACoffee" style="height: 50px !important;width: 181px !important;" ></a>
+<a href="https://www.buymeacoffee.com/khoihprog6" title="Donate to my libraries using BuyMeACoffee"><img src="https://img.shields.io/badge/buy%20me%20a%20coffee-donate-orange.svg?logo=buy-me-a-coffee&logoColor=FFDD00" style="height: 20px !important;width: 200px !important;" ></a>
+<a href="https://profile-counter.glitch.me/khoih-prog/count.svg" title="Total khoih-prog Visitor count"><img src="https://profile-counter.glitch.me/khoih-prog/count.svg" style="height: 30px;width: 200px;"></a>
+<a href="https://profile-counter.glitch.me/khoih-prog-STM32_PWM/count.svg" title="STM32_PWM Visitor count"><img src="https://profile-counter.glitch.me/khoih-prog-STM32_PWM/count.svg" style="height: 30px;width: 200px;"></a>
 
 
 ---
@@ -129,7 +134,6 @@ Functions using normal software-based PWM, relying on loop() and calling millis(
 
  1. [`Arduino IDE 1.8.19+` for Arduino](https://github.com/arduino/Arduino). [![GitHub release](https://img.shields.io/github/release/arduino/Arduino.svg)](https://github.com/arduino/Arduino/releases/latest)
  2. [`Arduino Core for STM32 v2.3.0+`](https://github.com/stm32duino/Arduino_Core_STM32) for STM32F/L/H/G/WB/MP1 boards. [![GitHub release](https://img.shields.io/github/release/stm32duino/Arduino_Core_STM32.svg)](https://github.com/stm32duino/Arduino_Core_STM32/releases/latest)
-
  3. To use with certain example
    - [`SimpleTimer library`](https://github.com/jfturcot/SimpleTimer) for [ISR_16_Timers_Array example](examples/ISR_16_Timers_Array).
 ---
@@ -147,15 +151,15 @@ You can also use this link [![arduino-library-badge](https://www.ardu-badge.com/
 Another way to install is to:
 
 1. Navigate to [**STM32_PWM**](https://github.com/khoih-prog/STM32_PWM) page.
-2. Download the latest release `STM32_PWM-master.zip`.
-3. Extract the zip file to `STM32_PWM-master` directory 
-4. Copy whole `STM32_PWM-master` folder to Arduino libraries' directory such as `~/Arduino/libraries/`.
+2. Download the latest release `STM32_PWM-main.zip`.
+3. Extract the zip file to `STM32_PWM-main` directory 
+4. Copy whole `STM32_PWM-main` folder to Arduino libraries' directory such as `~/Arduino/libraries/`.
 
 ### VS Code & PlatformIO
 
 1. Install [VS Code](https://code.visualstudio.com/)
 2. Install [PlatformIO](https://platformio.org/platformio-ide)
-3. Install [**STM32_PWM** library](https://platformio.org/lib/show/12902/STM32_PWM) by using [Library Manager](https://platformio.org/lib/show/12902/STM32_PWM/installation). Search for **STM32_PWM** in [Platform.io Author's Libraries](https://platformio.org/lib/search?query=author:%22Khoi%20Hoang%22)
+3. Install [**STM32_PWM** library](https://registry.platformio.org/libraries/khoih-prog/STM32_PWM) by using [Library Manager](https://registry.platformio.org/libraries/khoih-progSTM32_PWM/installation). Search for **STM32_PWM** in [Platform.io Author's Libraries](https://platformio.org/lib/search?query=author:%22Khoi%20Hoang%22)
 4. Use included [platformio.ini](platformio/platformio.ini) file from examples to ensure that all dependent libraries will installed automatically. Please visit documentation for the other options and examples at [Project Configuration File](https://docs.platformio.org/page/projectconf.html)
 
 ---
@@ -189,7 +193,7 @@ To be sure which Timer is available for the board you're using, check the Core P
 
 The information will be as follows:
 
-```
+```cpp
 typedef struct
 {
   __IO uint32_t CR1;         /*!< TIM control register 1,                   Address offset: 0x00 */
@@ -224,7 +228,7 @@ typedef struct
 
 and
 
-```
+```cpp
 #define PERIPH_BASE            0x40000000UL /*!< Base address of : AHB/ABP Peripherals   
 /*!< Peripheral memory map */
 #define APB1PERIPH_BASE        PERIPH_BASE
@@ -319,7 +323,7 @@ Before using any Timer for a PWM channel, you have to make sure the Timer has no
 
 #### 1. Init Hardware Timer
 
-```
+```cpp
 // Automatically retrieve TIM instance and channel associated to pin
 // This is used to be compatible with all STM32 series automatically.
 TIM_TypeDef *Instance = (TIM_TypeDef *)pinmap_peripheral(pinNameToUse, PinMap_PWM);
@@ -327,7 +331,7 @@ TIM_TypeDef *Instance = (TIM_TypeDef *)pinmap_peripheral(pinNameToUse, PinMap_PW
 
 #### 2. Set PWM Frequency, dutycycle, attach irqCallbackStartFunc and irqCallbackStopFunc functions
 
-```
+```cpp
 void PeriodCallback()
 {
 
@@ -356,7 +360,7 @@ void setup()
 
 ### Example [PWMs_Array_Complex](examples/PWMs_Array_Complex)
 
-```
+```cpp
 #if !( defined(STM32F0) || defined(STM32F1) || defined(STM32F2) || defined(STM32F3)  ||defined(STM32F4) || defined(STM32F7) || \
        defined(STM32L0) || defined(STM32L1) || defined(STM32L4) || defined(STM32H7)  ||defined(STM32G0) || defined(STM32G4) || \
        defined(STM32WB) || defined(STM32MP1) || defined(STM32L5))
@@ -833,7 +837,7 @@ void loop()
 The following is the sample terminal output when running example [PWMs_Array_Complex](examples/PWMs_Array_Complex) on **NUCLEO_F767ZI** to demonstrate the accuracy of Hardware-based PWM, **especially when system is very busy**.
 
 
-```
+```cpp
 Starting PWMs_Array_Complex on NUCLEO_F767ZI
 STM32_PWM v1.0.0
 Index = 0, Instance = 0x40000000, channel = 1, TimerIndex = 1, PinName = 0
@@ -871,7 +875,7 @@ PWM Channel : 22000, programmed Period (us): 2000, actual : 2000, programmed Dut
 
 The following is the sample terminal output when running example [PWMs_Array_Complex](examples/PWMs_Array_Complex) on **NUCLEO_H743ZI2** to demonstrate the accuracy of Hardware-based PWM, **especially when system is very busy**.
 
-```
+```cpp
 Starting PWMs_Array_Complex on NUCLEO_H743ZI2
 STM32_PWM v1.0.0
 Index = 0, Instance = 0x40000000, channel = 1, TimerIndex = 1, PinName = 0
@@ -897,7 +901,7 @@ PWM Channel : 22000, programmed Period (us): 2000, actual : 2000, programmed Dut
 
 The following is the sample terminal output when running example [PWMs_Array_Complex](examples/PWMs_Array_Complex) on **NUCLEO_L552ZE_Q** to demonstrate the accuracy of Hardware-based PWM, **especially when system is very busy**.
 
-```
+```cpp
 Starting PWMs_Array_Complex on NUCLEO_L552ZE_Q
 STM32_PWM v1.0.0
 Index = 0, Instance = 0x40000000, channel = 1, TimerIndex = 1, PinName = 0
@@ -923,7 +927,7 @@ PWM Channel : 22000, programmed Period (us): 2000, actual : 1999, programmed Dut
 
 The following is the sample terminal output when running example [PWMs_Array_Complex](examples/PWMs_Array_Complex) on **BLUEPILL_F103CB** to demonstrate the accuracy of Hardware-based PWM, **especially when system is very busy**.
 
-```
+```cpp
 Starting PWMs_Array_Complex on BLUEPILL_F103CB
 STM32_PWM v1.0.0
 Using pin = 0, 1, etc => Index = 0, Instance = 0x40000000, channel = 1, TimerIndex = 1, PinName = 0
@@ -1016,12 +1020,12 @@ If you want to contribute to this project:
 
 ### License
 
-- The library is licensed under [MIT](https://github.com/khoih-prog/STM32_PWM/blob/master/LICENSE)
+- The library is licensed under [MIT](https://github.com/khoih-prog/STM32_PWM/blob/main/LICENSE)
 
 ---
 
 ## Copyright
 
-Copyright 2021- Khoi Hoang
+Copyright (c) 2021- Khoi Hoang
 
 

@@ -31,7 +31,7 @@ Arduino IDE version: 1.8.16
 STM32 Core Version 2.3.0
 Nucleo-144 STM32H7 NUCLEO_H743ZI2
 OS: Ubuntu 20.04 LTS
-Linux xy-Inspiron-3593 5.15.0-52-generic #58~20.04.1-Ubuntu SMP Thu Oct 13 13:09:46 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+Linux xy-Inspiron-3593 5.15.0-53-generic #59~20.04.1-Ubuntu SMP Thu Oct 20 15:10:22 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
 
 Context:
 I encountered a crash while using this library

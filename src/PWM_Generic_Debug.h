@@ -5,7 +5,7 @@
 
   Built by Khoi Hoang https://github.com/khoih-prog/STM32_PWM
   Licensed under MIT license
-  
+
   Hardware-based multi-channel PWM wrapper library for STM32F/L/H/G/WB/MP1 boards
 
   Version: 1.0.0
