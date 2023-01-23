@@ -37,7 +37,8 @@
   * [ 1. PWM_Multi](examples/PWM_Multi)
   * [ 2. PWM_Multi_Args](examples/PWM_Multi_Args)
   * [ 3. PWMs_Array_Complex](examples/PWMs_Array_Complex)
-* [Example PWMs_Array_Complex](#example-PWMs_Array_Complex)
+  * [ 4. PWM_StepperControl](examples/PWM_StepperControl) **New**
+* [Example PWM_StepperControl](#example-PWM_StepperControl)
 * [Debug Terminal Output Samples](#debug-terminal-output-samples)
   * [1. PWMs_Array_Complex on NUCLEO_F767ZI](#1-PWMs_Array_Complex-on-NUCLEO_F767ZI)
   * [2. PWMs_Array_Complex on NUCLEO_H743ZI2](#2-PWMs_Array_Complex-on-NUCLEO_H743ZI2)
@@ -132,7 +133,7 @@ Functions using normal software-based PWM, relying on loop() and calling millis(
 ## Prerequisites
 
  1. [`Arduino IDE 1.8.19+` for Arduino](https://github.com/arduino/Arduino). [![GitHub release](https://img.shields.io/github/release/arduino/Arduino.svg)](https://github.com/arduino/Arduino/releases/latest)
- 2. [`Arduino Core for STM32 v2.3.0+`](https://github.com/stm32duino/Arduino_Core_STM32) for STM32F/L/H/G/WB/MP1 boards. [![GitHub release](https://img.shields.io/github/release/stm32duino/Arduino_Core_STM32.svg)](https://github.com/stm32duino/Arduino_Core_STM32/releases/latest)
+ 2. [`Arduino Core for STM32 v2.4.0+`](https://github.com/stm32duino/Arduino_Core_STM32) for STM32F/L/H/G/WB/MP1 boards. [![GitHub release](https://img.shields.io/github/release/stm32duino/Arduino_Core_STM32.svg)](https://github.com/stm32duino/Arduino_Core_STM32/releases/latest)
  3. To use with certain example
    - [`SimpleTimer library`](https://github.com/jfturcot/SimpleTimer) for [ISR_16_Timers_Array example](examples/ISR_16_Timers_Array).
 ---
@@ -333,7 +334,6 @@ TIM_TypeDef *Instance = (TIM_TypeDef *)pinmap_peripheral(pinNameToUse, PinMap_PW
 ```cpp
 void PeriodCallback()
 {
-
 }
 
 void setup()
@@ -352,12 +352,13 @@ void setup()
  1. [PWM_Multi](examples/PWM_Multi)
  2. [PWM_Multi_Args](examples/PWM_Multi_Args)
  3. [PWMs_Array_Complex](examples/PWMs_Array_Complex)
+ 4. [PWM_StepperControl](examples/PWM_StepperControl) **New**
 
  
 ---
 ---
 
-### Example [PWMs_Array_Complex](examples/PWMs_Array_Complex)
+### Example [PWM_StepperControl](examples/PWM_StepperControl)
 
 ```cpp
 #if !( defined(STM32F0) || defined(STM32F1) || defined(STM32F2) || defined(STM32F3)  ||defined(STM32F4) || defined(STM32F7) || \
@@ -838,7 +839,7 @@ The following is the sample terminal output when running example [PWMs_Array_Com
 
 ```cpp
 Starting PWMs_Array_Complex on NUCLEO_F767ZI
-STM32_PWM v1.0.0
+STM32_PWM v1.0.1
 Index = 0, Instance = 0x40000000, channel = 1, TimerIndex = 1, PinName = 0
 Index = 1, Instance = 0x40010000, channel = 3, TimerIndex = 0, PinName = 77
 Index = 2, Instance = 0x40000800, channel = 4, TimerIndex = 3, PinName = 63
@@ -876,7 +877,7 @@ The following is the sample terminal output when running example [PWMs_Array_Com
 
 ```cpp
 Starting PWMs_Array_Complex on NUCLEO_H743ZI2
-STM32_PWM v1.0.0
+STM32_PWM v1.0.1
 Index = 0, Instance = 0x40000000, channel = 1, TimerIndex = 1, PinName = 0
 Index = 1, Instance = 0x40010000, channel = 3, TimerIndex = 0, PinName = 77
 Index = 2, Instance = 0x40000800, channel = 4, TimerIndex = 3, PinName = 63
@@ -902,7 +903,7 @@ The following is the sample terminal output when running example [PWMs_Array_Com
 
 ```cpp
 Starting PWMs_Array_Complex on NUCLEO_L552ZE_Q
-STM32_PWM v1.0.0
+STM32_PWM v1.0.1
 Index = 0, Instance = 0x40000000, channel = 1, TimerIndex = 1, PinName = 0
 Index = 1, Instance = 0x40012C00, channel = 3, TimerIndex = 0, PinName = 77
 Index = 2, Instance = 0x40000800, channel = 4, TimerIndex = 3, PinName = 63
@@ -928,7 +929,7 @@ The following is the sample terminal output when running example [PWMs_Array_Com
 
 ```cpp
 Starting PWMs_Array_Complex on BLUEPILL_F103CB
-STM32_PWM v1.0.0
+STM32_PWM v1.0.1
 Using pin = 0, 1, etc => Index = 0, Instance = 0x40000000, channel = 1, TimerIndex = 1, PinName = 0
 Using pin = 0, 1, etc => Index = 1, Instance = 0x40000400, channel = 2, TimerIndex = 2, PinName = 21
 Using pin = 0, 1, etc => Index = 2, Instance = 0x40012C00, channel = 3, TimerIndex = 0, PinName = 10
@@ -952,6 +953,27 @@ SimpleTimer (ms): 2000, us : 52974007, Dus : 10001000
 PWM Channel : 0, programmed Period (us): 50000, actual : 49999, programmed DutyCycle : 20, actual : 20.00
 PWM Channel : 1, programmed Period (us): 20000, actual : 20000, programmed DutyCycle : 30, actual : 30.00
 PWM Channel : 2, programmed Period (us): 2000, actual : 2000, programmed DutyCycle : 50, actual : 50.00
+```
+---
+
+### 5. PWM_StepperControl on NUCLEO_F767ZI
+
+The following is the sample terminal output when running example [PWM_StepperControl](examples/PWM_StepperControl) on **NUCLEO_F767ZI** to demonstrate how to control Stepper Motor using PWM
+
+
+```
+Starting PWM_StepperControl on NUCLEO_F767ZI
+STM32_PWM v1.0.1
+stepperTimer = 0x40010000, channel = 3, TimerIndex = 0, PinName = 77
+setSpeed = 2000
+setSpeed = 0
+setSpeed = -1000
+setSpeed = 0
+setSpeed = 2000
+setSpeed = 0
+setSpeed = -1000
+```
+
 
 ---
 ---
@@ -996,6 +1018,7 @@ Submit issues to: [STM32_PWM issues](https://github.com/khoih-prog/STM32_PWM/iss
 
 1. Basic hardware-based multi-channel PWM for **STM32F/L/H/G/WB/MP1 boards**.
 2. Add Table of Contents
+3. Add example [PWM_StepperControl](https://github.com/khoih-prog/STM32_PWM/tree/main/examples/PWM_StepperControl) to demo how to control Stepper Motor using PWM
 
 ---
 ---
@@ -1004,12 +1027,22 @@ Submit issues to: [STM32_PWM issues](https://github.com/khoih-prog/STM32_PWM/iss
 
 Many thanks for everyone for bug reporting, new feature suggesting, testing and contributing to the development of this library.
 
+1. Thanks to [Paul van Dinther](https://github.com/dinther) for proposing new way to use PWM to drive Stepper-Motor in [Using PWM to step a stepper driver #16](https://github.com/khoih-prog/RP2040_PWM/issues/16), leading to v2.0.3
+
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/dinther"><img src="https://github.com/dinther.png" width="100px;" alt="dinther"/><br /><sub><b>Paul van Dinther</b></sub></a><br /></td>
+  </tr>
+</table>
+
 
 ---
 
 ## Contributing
 
 If you want to contribute to this project:
+
 - Report bugs and errors
 - Ask for enhancements
 - Create issues and pull requests
